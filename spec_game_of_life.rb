@@ -33,6 +33,19 @@ describe 'Game of life' do
     it 'should create a new cell object' do
       subject.is_a?(Cell).should be_true
     end
+
+    it 'should respond to living status methods' do
+      subject.should respond_to(:alive)
+    end
+
+    it 'should respond to coordinate methods' do
+      subject.should respond_to(:x)
+      subject.should respond_to(:y)
+    end
+
+    it 'should initialize as dead' do
+      subject.alive.should be_false
+    end
   end
 
 end

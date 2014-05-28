@@ -12,6 +12,11 @@ class World
                   end
   end
 end
-
+# cell defaults as dead
 class Cell
+  attr_accessor :alive, :x, :y
+
+  def initialize
+    @alive = false
+  end
 end
