@@ -21,15 +21,15 @@ class World
                if x > 0
                 @cell_grid[y][x].scan << @cell_grid[y][x-1].state
                end
-               # Top Left
+               # Bottom Left
                if y < 2 && x > 0
                 @cell_grid[y][x].scan << @cell_grid[y+1][x-1].state
                end
-               # Top
+               # Bottom
                if y < 2
                 @cell_grid[y][x].scan << @cell_grid[y+1][x].state
                end
-               # Top Right
+               # Bottom Right
                if y < 2 && x < 2
                 @cell_grid[y][x].scan << @cell_grid[y+1][x+1].state
                end
@@ -37,15 +37,15 @@ class World
                if x < 2
                 @cell_grid[y][x].scan << @cell_grid[y][x+1].state
                end
-               # Bottom Right
+               # Top Right
                if y > 0 && x < 2
                 @cell_grid[y][x].scan << @cell_grid[y-1][x+1].state
                end
-               # Bottom
+               # Top
                if y > 0
                 @cell_grid[y][x].scan << @cell_grid[y-1][x].state
                end
-               # Bottom Left
+               # Top Left
                if y > 0 && x > 0
                 @cell_grid[y][x].scan << @cell_grid[y-1][x-1].state
                end
