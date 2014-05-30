@@ -1,3 +1,5 @@
+require 'colorize'
+
 class World
     attr_accessor :rows, :cols, :cell_grid, :scan_neighbors
 
@@ -74,13 +76,13 @@ class World
               else
                 cell.state = 1
                 cell.scan.clear
-                print_ary << "O "
+                print_ary << "☻ ".red
               end
             else
               if cell.scan.count(1) == 3
                 cell.state = 1 #regenerate!
                 cell.scan.clear
-                print_ary << "O "
+                print_ary << "☻ ".green
               else
                 cell.state = 0
                 cell.scan.clear
