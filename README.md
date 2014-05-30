@@ -13,12 +13,3 @@ Rules
 
 4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
-cell life
-
-neighbors < 1 neighbor = dead
-
-2..3 neighbors = alive
-
-neighbors > 3 neighbors = dead
-
-dead && 3 neighbors = alive
