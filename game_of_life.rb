@@ -84,7 +84,6 @@ class World
                 cell.scan.clear
                 print_ary << "☻ ".green
               else
-                cell.state = 0
                 cell.scan.clear
                 print_ary << " "
               end
@@ -130,6 +129,6 @@ class Cell
     end
 end
 
-my_world = World.new(100,100)
+my_world = World.new(80,80)
 
-my_world.tick(500)
+my_world.tick(1000)
