@@ -59,30 +59,51 @@ class World
     def tick(frames)
       frames.times do
         self.scan_neighbors
+        print_ary = []
         @cell_grid.each do |row|
           row.each do |cell|
             if cell.alive?
               if cell.scan.count(1) < 2
                 cell.state = 0
                 cell.scan.clear
+                print_ary << " "
               elsif cell.scan.count(1) > 3
-                cell.state = 0
+                cell.state = 0 #sufficate!
                 cell.scan.clear
+                print_ary << " "
               else
                 cell.state = 1
                 cell.scan.clear
+                print_ary << "O "
               end
             else
               if cell.scan.count(1) == 3
                 cell.state = 1 #regenerate!
                 cell.scan.clear
+                print_ary << "O "
               else
                 cell.state = 0
                 cell.scan.clear
+                print_ary << " "
               end
             end
           end
         end
+        #prints rows and columns
+        counter = 0
+        print_ary.each do |state|
+          counter += 1
+          #sleep(0.00001)
+          if counter < @rows
+            print state
+          elsif counter == @rows
+            print state
+            puts
+            counter = 0
+          end
+        end
+        puts "\e[H"
+        print_ary.clear
       end
     end
 
@@ -107,6 +128,6 @@ class Cell
     end
 end
 
-my_world = World.new(3,3)
+my_world = World.new(90,90)
 
-my_world.tick(1)
+my_world.tick(1000)
