@@ -15,7 +15,7 @@ Rules
 
 cell life
 
-< 1 neighbor = dead
+neighbors < 1 neighbor = dead
 
 2..3 neighbors = alive
 
