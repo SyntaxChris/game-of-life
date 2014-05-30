@@ -3,7 +3,7 @@ require 'colorize'
 class World
     attr_accessor :rows, :cols, :cell_grid, :scan_neighbors
 
-    def initialize(rows=3, cols=3)
+    def initialize(rows, cols)
         @rows = rows
         @cols = cols
         @cell_grid =
@@ -36,7 +36,7 @@ class World
                 @cell_grid[y][x].scan << @cell_grid[y+1][x+1].state
                end
                # Right
-               if x < @rows - 1
+               if x < @rows - 1 && @cell_grid[y][x+1]
                 @cell_grid[y][x].scan << @cell_grid[y][x+1].state
                end
                # Top Right
@@ -104,7 +104,7 @@ class World
             counter = 0
           end
         end
-        puts "\e[H"
+        puts "\e[Hm"
         print_ary.clear
       end
     end
@@ -130,6 +130,6 @@ class Cell
     end
 end
 
-my_world = World.new(90,90)
+my_world = World.new(100,100)
 
-my_world.tick(1000)
+my_world.tick(500)
