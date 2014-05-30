@@ -1,3 +1,5 @@
+# Run in terminal window size 122 X 82
+
 require 'colorize'
 
 class World
@@ -11,7 +13,7 @@ class World
             Array.new(cols) do |x|
                 Cell.new(x, y, rand(2))
             end
-        end
+        end #[[Cell.new, Cell.new],[],[],[],[]]
     end
 
     def scan_neighbors
@@ -131,4 +133,4 @@ end
 
 my_world = World.new(80,80)
 
-my_world.tick(1000)
+my_world.tick(1200)
