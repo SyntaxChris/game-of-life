@@ -61,8 +61,7 @@ class World
         self.scan_neighbors
         @cell_grid.each do |row|
           row.each do |cell|
-            case
-            when cell.state == 1
+            if cell.alive?
               if cell.scan.count(1) < 2
                 cell.state = 0
                 cell.scan.clear
@@ -73,7 +72,7 @@ class World
                 cell.state = 1
                 cell.scan.clear
               end
-            when cell.state == 0
+            else
               if cell.scan.count(1) == 3
                 cell.state = 1 #regenerate!
                 cell.scan.clear
