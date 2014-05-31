@@ -2,9 +2,10 @@
 
 require 'colorize'
 
-class World
-    attr_accessor :rows, :cols, :cell_grid, :scan_neighbors
 
+class World
+
+    attr_accessor :rows, :cols, :cell_grid
     def initialize(rows, cols)
         @rows = rows
         @cols = cols
@@ -13,10 +14,10 @@ class World
             Array.new(cols) do |x|
                 Cell.new(x, y, rand(2))
             end
-        end #[[Cell.new, Cell.new],[],[],[],[]]
+        end
     end
 
-    def scan_neighbors
+    def scan_neighbors #iterates through cell_grid, finds neighbors of each cell, and pushes neighbors status into the cells scan array
         y = 0
         while y < @cell_grid.length do
              x = 0
@@ -60,8 +61,9 @@ class World
         end
     end
 
-    def tick(frames)
+    def tick(frames) #iterates through cell_grid, pushes results in print_array, prints print_array to consol, and empty print_array and scan.
       frames.times do
+        #sleep(0.000005)
         self.scan_neighbors
         print_ary = []
         @cell_grid.each do |row|
@@ -96,10 +98,9 @@ class World
         counter = 0
         print_ary.each do |state|
           counter += 1
-          #sleep(0.00001)
-          if counter < @rows
+          if counter < @cols
             print state
-          elsif counter == @rows
+          elsif counter == @cols
             print state
             puts
             counter = 0
@@ -113,8 +114,8 @@ class World
 end
 
 class Cell
-    attr_accessor :x, :y, :state, :scan
 
+    attr_accessor :x, :y, :state, :scan
     def initialize(x=0, y=0, state=0)
         @x = x
         @y = y
@@ -129,8 +130,8 @@ class Cell
             true
         end
     end
+
 end
 
 my_world = World.new(80,80)
-
 my_world.tick(1200)
