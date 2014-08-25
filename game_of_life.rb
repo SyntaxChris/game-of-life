@@ -4,7 +4,7 @@ require 'colorize'
 
 class Cell
 
-    attr_accessor :x, :y, :state, :scan
+    attr_accessor :state, :scan
     def initialize(x=0, y=0, state=0)
         @x = x
         @y = y
@@ -25,7 +25,8 @@ end
 
 class World
 
-    attr_accessor :rows, :cols, :cell_grid
+    attr_accessor :rows, :cols
+
     def initialize(rows, cols)
         @rows = rows
         @cols = cols
