@@ -2,6 +2,26 @@
 
 require 'colorize'
 
+class Cell
+
+    attr_accessor :x, :y, :state, :scan
+    def initialize(x=0, y=0, state=0)
+        @x = x
+        @y = y
+        @state = state
+        @scan = []
+    end
+
+    def alive?
+        if @state == 0
+            false
+        elsif @state == 1
+            true
+        end
+    end
+
+end
+
 
 class World
 
@@ -107,28 +127,7 @@ class World
           end
         end
         puts "\e[Hm"
-        print_ary.clear
       end
-    end
-
-end
-
-class Cell
-
-    attr_accessor :x, :y, :state, :scan
-    def initialize(x=0, y=0, state=0)
-        @x = x
-        @y = y
-        @state = state
-        @scan = []
-    end
-
-    def alive?
-        if @state == 0
-            false
-        elsif @state == 1
-            true
-        end
     end
 
 end
